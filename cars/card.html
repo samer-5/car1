@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+     
+      <title> card </title>
+      
+      <link rel="stylesheet" href="style.css">
+     
+     <style>
+        
+.concats {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./assets/images/45.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .menu-li .menu-link {
+    color: black;
+  }
+  .logo h2{
+    color:black;
+  }
+ 
+  
+
+  
+  
+
+
+    .shopping-cart-container {
+      width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+      }
+      
+      .shopping-cart-table {
+        width: 60%;
+        margin: auto;
+        border-collapse: collapse;
+      }
+      
+      th, td {
+        padding: 10px;
+        text-align: center;
+      }
+      
+      th {
+        color: white;
+        background-color: #1a0bf0;
+      }
+      
+      td img {
+        max-width: 100px;
+        max-height: 100px;
+      }
+      
+      tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+  
+     </style>
+   </head>
+   <body>
+      
+    <header class="headers">
+      <nav class="navbar">
+          <div class="menu-left">
+              <div class="logo">
+                  <h2>Cars</h2>
+              </div>
+          </div>
+          <div class="menu-right">
+              <ul class="menu-li">
+                  <li>
+                      <a href="./index.html" class="menu-link">Home</a>
+                  </li>
+                  <li>
+                      <a href="./card.html" class="menu-link">card</a>
+                  </li>
+                  <li>
+                      <a href="./about.html" class="menu-link">About</a>
+                  </li>
+                  <li>
+                      <a href="./concat.html" class="menu-link">Contact</a>
+                  </li>
+                  <li>
+                      <a href="./login.html" class="menu-linkv lg-hidden">login</a>
+                  </li>
+                  <li>
+                      <a href="./login.html" class="menu-link btn-link sm-hidden">login</a>
+                  </li>
+              </ul>                
+              <button onclick="toggleMenu()" class="btn-menubar lg-hidden">
+                 
+              </button>
+          </div>
+      </nav>
+      
+  </header>
+    
+
+      <main class="concats">
+       
+        <div class="shopping-cart-container" >
+            <table class="shopping-cart-table">
+              <thead>
+                <tr>
+                  <th>picture</th>
+                  <th>product</th>
+                  <th>quntty</th>
+                  <th>price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><img src="./assets/images/44.JPG" alt=" 1"></td>
+                  <td>card</td>
+                  <td>2</td>
+                  <td>1000 </td>
+                </tr>
+                <tr>
+                  <td><img  src="./assets/images/33.jpg"  alt=" 2"></td>
+                  <td> card</td>
+                  <td>1</td>
+                  <td>$2000 </td>
+                </tr>
+                <tr>
+                  <td><img  src="./assets/images/61.JPG"  alt=" 3"></td>
+                  <td>card</td>
+                  <td>3</td>
+                  <td>$150 </td>
+                </tr>
+              </tbody>
+            </table>
+          </div> 
+      </main>
+      <footer class="footer-distributed">
+
+        <div class="footer-left">
+            <h3>Cars<span>Shop</span></h3>
+
+            <p class="footer-links">
+                <a href="home.html">Home</a> |
+                <a href="about.html">About</a> |
+
+                <a href="contact.html">Contact</a> |
+                <a onclick="document.getElementById('id01').style.display='block'">Login</a>
+            </p>
+
+            <p class="footer-company-name">© 2024 Shopping.</p>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>KSA, Tabuk</span> </p>
+            </div>
+
+            <div style="padding-left: 28px;">
+                <p>+966 550-000-000</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@gmail.com">Shopping@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About the company</span> for selling Glasses online shop
+            </p>
+            <div class="footer-icons">
+                <a href="#"><i class=""><img src="./assets/images/icon/icons8-facebook-48.png" alt=" alt" class="wi"></i></a>
+                <a href="#"><i class=""><img src="./assets/images/icon/icons8-instagram-48.png" alt="" class="wi"></i></a>
+                <a href="#"><i class=""><img src="./assets/images/icon/icons8-telegram-app-48.png" alt="" class="wi"></i></a>
+                <a href="#"><i class=""><img src="./assets/images/icon/icons8-twitter-48.png" alt="" class="wi"></i></a>
+                <a href="#"><i class=""><img src="./assets/images/icon/icons8-whatsapp-48.png" alt="" class="wi"></i></a>
+            </div>
+        </div>
+    </footer>
+      <script src="./js/script.js"></script>
+      
+   </body>
+</html>

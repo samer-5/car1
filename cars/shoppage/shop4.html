@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .products{
+            margin: 20px;
+            border: 5px solid #d0c7c7;
+            box-shadow: 5px 3px 0 rgba(156, 155, 155, 0.45);
+            border-radius: 5px;
+            width: 750px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .products img{
+            width: 350px;
+            height: 101%;
+            object-fit: cover;
+            margin-bottom: 0px;
+            border-radius: 10px;
+        }
+        .detail {
+            padding-top: 10px;
+            background-color: #e4e1db;
+            padding-top: 7px;
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding-left: 4px;
+            flex-direction: column;
+            align-items: center;
+          }
+          .menu-li .menu-link {
+            text-decoration: none;
+            color: black;
+            font-size: 15px;
+        }
+        .logo h2 {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header class="headers">
+        <nav class="navbar">
+            <div class="menu-left">
+                <div class="logo">
+                    <h2>Cars</h2>
+                </div>
+            </div>
+            <div class="menu-right">
+                <ul class="menu-li">
+                    <li>
+                        <a href="" class="menu-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="" class="menu-link">Features</a>
+                    </li>
+                    <li>
+                        <a href="" class="menu-link">Price</a>
+                    </li>
+                    <li>
+                        <a href="" class="menu-link">Contact</a>
+                    </li>
+                    <li>
+                        <a href="" class="menu-linkv lg-hidden">Book Appointment</a>
+                    </li>
+                    <li>
+                        <a href="" class="menu-link btn-link sm-hidden">Book Appointment</a>
+                    </li>
+                </ul>                
+                <button onclick="toggleMenu()" class="btn-menubar lg-hidden">
+                    
+                </button>
+            </div>
+        </nav>
+       
+    </header>
+      
+    <!-- <div class="products-container">
+        <div class="product-img">
+            <a href=""> <img src="../assets/images/11.jpg" alt="no img"></a>
+        
+        </div>
+          
+        
+        <div class="product-img">
+         <a href=""> <img src="../assets/images/12.jpg" alt="no img"></a>
+          
+        </div>
+        <div class="product-img">
+        <a href="">  <img src="../assets/images/13.jpg" alt="no img"></a>
+          
+        </div>
+        <div class="product-img">
+            <a href=""><img src="../assets/images/23.png" alt="no img"></a>
+           
+        </div>
+           
+         
+        </div>   
+         -->
+   
+    <div class="products-container" style="padding-top: 20px;">
+      
+        <div class="products">
+            <a href=""><img src="../assets/images/35.jpg" alt="no img"></a>
+            <div class="detail">
+              <h3>Cars</h3>
+              <h3 style="text-align:center ;">FG</h3>
+              <h3 class="pr">2022  <span class="price">$1000</span></h3>
+            </div>
+          </div>
+        </div>   
+        <div class="products-container">
+            <div class="product">
+             <a href="../shop.html"> <img src="../assets/images/30.jpg" alt="no img"></a>
+             
+            </div>
+            <div class="product">
+             <a href=""> <img src="../assets/images/31.jpg" alt="no img"></a>
+             
+            </div>
+            <div class="product">
+            <a href="">  <img src="../assets/images/33.jpg" alt="no img"></a>
+             
+            </div>
+            <div class="product">
+                <a href=""><img src="../assets/images/35.JPG" alt="no img"></a>
+               
+              </div>
+            </div>   
+            
+            
+        <footer class="footer-distributed">
+
+            <div class="footer-left">
+                <h3>Cars<span>Shop</span></h3>
+    
+                <p class="footer-links">
+                    <a href="home.html">Home</a> |
+                    <a href="about.html">About</a> |
+                    <a href="contact.html">Contact</a> |
+                    <a onclick="document.getElementById('id01').style.display='block'">Login</a>
+                </p>
+    
+                <p class="footer-company-name">© 2024 Shopping.</p>
+            </div>
+    
+            <div class="footer-center">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>KSA, Tabuk</span> </p>
+                </div>
+    
+                <div style="padding-left: 28px;">
+                    <p>+966 550-000-000</p>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:support@gmail.com">Shopping@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p class="footer-company-about">
+                    <span>About the company</span> for selling Glasses online shop
+                </p>
+                <div class="footer-icons">
+                    <a href="#"><i class=""><img src="../assets/images/icon/icons8-facebook-48.png" alt=" alt" class="wi"></i></a>
+                    <a href="#"><i class=""><img src="../assets/images/icon/icons8-instagram-48.png" alt="" class="wi"></i></a>
+                    <a href="#"><i class=""><img src="../assets/images/icon/icons8-telegram-app-48.png" alt="" class="wi"></i></a>
+                    <a href="#"><i class=""><img src="../assets/images/icon/icons8-twitter-48.png" alt="" class="wi"></i></a>
+                    <a href="#"><i class=""><img src="../assets/images/icon/icons8-whatsapp-48.png" alt="" class="wi"></i></a>
+                </div>
+            </div>
+        </footer>
+    <script>
+        function toggleMenu() {
+            const menu_box = document.querySelector(".menu-li");
+            const navbar = document.querySelector(".navbar");
+            navbar.classList.toggle('active');
+            menu_box.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

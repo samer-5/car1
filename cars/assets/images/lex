@@ -1,0 +1,368 @@
+Sure! Here's an example of web page code that manages the mailboxes of lecturers in a college using MySQL, PHP, and HTML with object-oriented writing. It includes various security measures to protect against common attacks:
+
+index.html:
+html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mailbox Management</title>
+</head>
+<body>
+    <h1>Mailbox Management</h1>
+
+    <form action="login.php" method="post">
+        <label for="password">Enter Password:</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Login">
+    </form>
+
+</body>
+</html>
+
+
+login.php:
+php
+<?php
+// Check if the password is correct
+if ($_POST['password'] === 'AAA') {
+    // Start a session and store the logged-in status
+    session_start();
+    $_SESSION['logged_in'] = true;
+
+    // Redirect to the mailbox management page
+    header('Location: mailbox.php');
+} else {
+    echo 'Invalid password.';
+}
+?>
+
+
+mailbox.php:
+```php
+<?php
+// Check if the user is logged in
+session_start();
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    header('Location: index.html');
+}
+
+// Connect to the database
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "mailbox_db";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Handle CRUD operations
+
+// Create or update a lecturer's details
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $boxNumber = $_POST["boxNumber"];
+    $phoneNumber = $_POST["phoneNumber"];
+
+    // Prepare and execute the SQL statement
+    $stmt = $conn->prepare("INSERT INTO lecturers (name, box_number, phone_number) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE name = VALUES(name), phone_number = VALUES(phone_number)");
+    $stmt->bind_param("sss", $name, $boxNumber, $phoneNumber);
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        echo "Lecturer details saved successfully.";
+    } else {
+        echo "Error saving lecturer details.";
+    }
+
+    $stmt->close();
+}
+
+// Read lecturer details
+$sql = "SELECT * FROM lecturers";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "Name: " . htmlspecialchars($row["name"]) . "<br>";
+        echo "Box Number: " . htmlspecialchars($row["box_number"]) . "<br>";
+        echo "Phone Number: " . htmlspecialchars($row["phone_number"]) . "<br><br>";
+    }
+} else {
+    echo "No lecturers found.";
+}
+
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mailbox Management</title>
+</head>
+<body>
+<h1>Mailbox Management</h1>
+
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="boxNumber">Box Number:</label>
+    <input type="text" id="boxNumber" name="boxNumber" required><br>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" name="phoneNumber" required><br>
+
+    <input type="submit
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <?php
+
+// إنشاء قاعدة بيانات MySQL
+$db = new PDO("mysql:host=localhost;dbname=mailbox", "root", "");
+
+// إنشاء كائنات المحاضرين
+class Lecturer {
+
+    public $id;
+    public $name;
+    public $box_number;
+    public $phone_number;
+
+    public function __construct($id, $name, $box_number, $phone_number) {
+        $this->id = $id;
+        $this->name = $name;
+        $this->box_number = $box_number;
+        $this->phone_number = $phone_number;
+    }
+}
+
+// إنشاء كائنات الإدارة
+class Admin {
+
+    public $password = "AAA";
+
+    public function check_password($password) {
+        return $this->password === $password;
+    }
+}
+
+// وظائف CRUD
+
+// إنشاء محاضر جديد
+function create_lecturer($name, $box_number, $phone_number) {
+    global $db;
+
+    $query = "INSERT INTO lecturers (name, box_number, phone_number) VALUES (?, ?, ?)";
+    $stmt = $db->prepare($query);
+    $stmt->execute([$name, $box_number, $phone_number]);
+
+    return $db->lastInsertId();
+}
+
+// قراءة جميع المحاضرين
+function read_all_lecturers() {
+    global $db;
+
+    $query = "SELECT * FROM lecturers";
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+
+    $lecturers = [];
+    while ($row = $stmt->fetch()) {
+        $lecturers[] = new Lecturer($row['id'], $row['name'], $row['box_number'], $row['phone_number']);
+    }
+
+    return $lecturers;
+}
+
+// قراءة محاضر معين
+function read_lecturer($id) {
+    global $db;
+
+    $query = "SELECT * FROM lecturers WHERE id = ?";
+    $stmt = $db->prepare($query);
+    $stmt->execute([$id]);
+
+    $row = $stmt->fetch();
+    return new Lecturer($row['id'], $row['name'], $row['box_number'], $row['phone_number']);
+}
+
+// تحديث محاضر معين
+function update_lecturer($id, $name, $box_number, $phone_number) {
+    global $db;
+
+    $query = "UPDATE lecturers SET name = ?, box_number = ?, phone_number = ? WHERE id = ?";
+    $stmt = $db->prepare($query);
+    $stmt->execute([$name, $box_number, $phone_number, $id]);
+}
+
+// حذف محاضر معين
+function delete_lecturer($id) {
+    global $db;
+
+    $query = "DELETE FROM lecturers WHERE id = ?";
+    $stmt = $db->prepare($query);
+    $stmt->execute([$id]);
+}
+
+// التحقق من كلمة مرور الإدارة
+function check_admin_password($password) {
+    global $admin;
+
+    return $admin->check_password($password);
+}
+
+// التحقق من صحة اسم المحاضر
+function validate_lecturer_name(<span class="math-inline">name\) \{
+return preg\_match\('/^\[a\-zA\-Z \]\+</span>/', $name);
+}
+
+// التحقق من صحة رقم صندوق البريد
+function validate_box_number(<span class="math-inline">box\_number\) \{
+return preg\_match\('/^\[0\-9\]\{4\}</span>/', $box_number);
+}
+
+// التحقق من صحة رقم هاتف المحاضر
+function validate_phone_number(<span class="math-inline">phone\_number\) \{
+return preg\_match\('/^\[0\-9\]\{10\}</span>/', $phone_number);
+}
+
+// الحماية
+
+// حماية مدخلات المستخدم
+function sanitize_input($input) {
+    return trim(htmlspecialchars(stripslashes($input)));
+}
+
+// حماية تسجيل دخول الإدارة
+function protect_admin_login() {
+    if (!check_admin_password($_POST['password'])) {
+      
+        echo "كلمة المرور غير صحيحة.";
+        
+        
+        
+        
+        
+        
+        هنا هو مثال للكود الذي يقوم بتنفيذ المطلوب:
+
+index.php:
+
+php
+<?php
+session_start();
+
+// تحقق من صحة كلمة المرور
+if (isset($_POST['password']) && $_POST['password'] === 'AAA') {
+    $_SESSION['authenticated'] = true;
+} elseif (!isset($_SESSION['authenticated']) || !$_SESSION['authenticated']) {
+    // إعادة توجيه المستخدم إلى صفحة تسجيل الدخول إذا لم يتم التحقق من صحة كلمة المرور
+    header('Location: login.php');
+    exit;
+}
+
+// استدعاء ملف التصميم الخاص بالصفحة
+require_once 'layout.php';
+
+
+login.php:
+
+php
+<!DOCTYPE html>
+<html>
+<head>
+    <title>تسجيل الدخول</title>
+</head>
+<body>
+    <h1>تسجيل الدخول</h1>
+    <form method="post" action="index.php">
+        <label for="password">كلمة المرور:</label>
+        <input type="password" name="password" id="password">
+        <input type="submit" value="تسجيل الدخول">
+    </form>
+</body>
+</html>
+
+
+layout.php:
+
+php
+<!DOCTYPE html>
+<html>
+<head>
+    <title>إدارة صناديق البريد</title>
+</head>
+<body>
+
+<?php
+
+// استدعاء ملف التصميم الخاص بالقائمة الجانبية
+require_once 'sidebar.php';
+
+// استدعاء ملف التصميم الخاص بالمحتوى
+require_once 'content.php';
+
+?>
+
+</body>
+</html>
+
+
+sidebar.php:
+
+php
+<div id="sidebar">
+    <ul>
+        <li><a href="index.php">الرئيسية</a></li>
+        <li><a href="lecturers.php">إدارة المحاضرين</a></li>
+    </ul>
+</div>
+
+
+content.php:
+
+php
+<div id="content">
+    <?php
+
+    // تأكد من وجود الملف الذي يتم طلبه وتضمينه
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+        if (file_exists($page . '.php')) {
+            require_once $page . '.php';
+        } else {
+            echo 'الصفحة غير موجودة.';
+        }
+    } else {
+        echo 'مرحبًا بك في صفحة الرئيسية.';
+    }
+
+    ?>
+</div>
+
+
+lecturers.php:
+
+```php
+<?php
+
+// استدعاء ملف التصميم الخاص بقائمة المحاضرين
+require_once 'lecturers_list.php';
+
+// استدعاء ملف التصميم الخاص بإضافة محاضر جديد
+require_once 'add_lecturer.php';
+
+// استدعاء ملف التصميم الخاص بتعديل محاضر
+require_once 'edit_lecturer.php';
+
+// استدعاء مل

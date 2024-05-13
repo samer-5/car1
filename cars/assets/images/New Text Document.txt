@@ -1,0 +1,7 @@
+ npm i -D react-router-dom@latest
+ npm install @popperjs/core --save
+npm install @popperjs/core   
+ npm i bootstrap@5.3.1  
+ npm config set registry http://registry.npmjs.org/
+ composer update --ignore-platform-reqs
+ npm config set legacy-peer-deps true

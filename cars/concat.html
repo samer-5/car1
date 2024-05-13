@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+     
+      <title>concat </title>
+      
+      <link rel="stylesheet" href="style.css">
+     
+     <style>
+        
+.concats {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./assets/images/34.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .menu-li .menu-link {
+    color: black;
+  }
+  .logo h2{
+    color: black;
+  }
+  .concats::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  section-concats {
+    position: relative;
+    z-index: 3;
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+  
+  .container-concats {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .section-concats-header {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  
+  .section-concats-header h2 {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  
+  .section-concats-header p {
+    color: #FFF;
+  }
+  
+  .row  {
+    display: flex;
+  
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .contact-info {
+    width: 50%;
+  }
+  
+  .concats-info-item {
+    display: flex;
+    margin-bottom: 30px;
+  }
+  
+  .contact-info-icon {
+    height: 70px;
+    width: 70px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 50%;
+  }
+  
+  .contact-info-icon i {
+    font-size: 30px;
+    line-height: 70px;
+  }
+  
+  .concats-info {
+    margin-left: 20px;
+  }
+  
+  .concats-info h4 {
+    color: #350ad1;
+    font-size: 1.4em;
+    margin-bottom: 5px;
+  }
+  
+  .concats-info p {
+    color: #FFF;
+    font-size: 1em;
+  }
+  
+.contact-form {
+  background-color: #fff;
+  padding: 40px;
+  width: 45%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.contact-form h2 {
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.contact-form .input-box {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.contact-form .input-box input,
+.contact-form .input-box textarea{
+  width: 100%;
+  padding: 5px 0;
+  font-size: 16px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 2px solid #333;
+  outline: none;
+  resize: none;
+}
+
+.contact-form .input-box span {
+  position: absolute;
+  left: 0;
+  padding: 5px 0;
+  font-size: 16px;
+  margin: 10px 0;
+  pointer-events: none;
+  transition: 0.5s;
+  color: #666;
+}
+
+.contact-form .input-box input:focus ~ span,
+.contact-form .input-box textarea:focus ~ span{
+  color: #e91e63;
+  font-size: 12px;
+  transform: translateY(-20px);
+}
+
+.contact-form .input-box input[type="submit"]
+{
+  width: 100%;
+  background: #1411da;
+  color: #FFF;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #2e09d3;
+  transition: 0.5s;
+}
+
+.contact-form .input-box input[type="submit"]:hover
+{
+  background: #2e0292;
+  color: #0a0da5;
+}
+  @media (max-width: 991px) {
+    section-concats {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    
+    .row {
+      flex-direction: column;
+    }
+    
+    .contact-info {
+      margin-bottom: 40px;
+      width: 100%;
+    }
+    
+    .contact-form {
+      width: 100%;
+    }
+  }
+     </style>
+   </head>
+   <body>
+      
+    <header class="headers">
+        <nav class="navbar">
+            <div class="menu-left">
+                <div class="logo">
+                    <h2>Cars</h2>
+                </div>
+            </div>
+            <div class="menu-right">
+                <ul class="menu-li">
+                    <li>
+                        <a href="./index.html" class="menu-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="./card.html" class="menu-link">card</a>
+                    </li>
+                    <li>
+                        <a href="./about.html" class="menu-link">About</a>
+                    </li>
+                    <li>
+                        <a href="./concat.html" class="menu-link">Contact</a>
+                    </li>
+                    <li>
+                        <a href="" class="menu-linkv lg-hidden">login</a>
+                    </li>
+                    <li>
+                        <a href="" class="menu-link btn-link sm-hidden">login</a>
+                    </li>
+                </ul>                
+                <button onclick="toggleMenu()" class="btn-menubar lg-hidden">
+                   
+                </button>
+            </div>
+        </nav>
+        
+    </header>
+      
+
+      <main class="concats">
+       
+         <section-concats>
+    
+    <div class="section-concats-header">
+      <div class="container-concats">
+        <h2>Contact Us</h2>
+        <p>
+           
+         Shop now from anywhere in world via mobile phone,Special prices
+         free offers subscribe now  and he get a discount 30%
+        </p>
+      </div>
+    </div>
+    
+    <div class="container-concats">
+      <div class="row">
+        
+        <div class="contact-info">
+          
+          
+          <div class="concats-info-item">
+           
+            
+            <div class="concats-info">
+              <h4>Phone</h4>
+              <p>571-457-2321</p>
+            </div>
+          </div>
+          
+          <div class="concats-info-item">
+          
+            
+            <div class="concats-info">
+              <h4>Email</h4>
+             <p>name@mfano.ga</p>
+            </div>
+          </div>
+          <div class="concats-info-item">
+         
+            
+            <div class="concats-info">
+              <h4>Address</h4>
+              <p>661   Road</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <form action="" id="contact-form">
+           
+            <div class="input-box">
+              <input type="text" required="true" name="" placeholder="Input name">
+             
+            </div>
+            
+            <div class="input-box">
+              <input type="email" required="true" name="" placeholder="Input email">
+              
+            </div>
+            
+            <div class="input-box">
+              <textarea required="true" name="" placeholder="Input message"></textarea>
+             
+            </div>
+            
+            <div class="input-box">
+              <input type="submit" value="Send" name="">
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </section-concats>
+       
+      </main>
+      <footer class="footer-distributed">
+
+        <div class="footer-left">
+            <h3>Cars<span>Shop</span></h3>
+
+            <p class="footer-links">
+                <a href="home.html">Home</a> |
+                <a href="about.html">About</a> |
+
+                <a href="contact.html">Contact</a> |
+                <a onclick="document.getElementById('id01').style.display='block'">Login</a>
+            </p>
+
+            <p class="footer-company-name">© 2024 Shopping.</p>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>KSA, Tabuk</span> </p>
+            </div>
+
+            <div style="padding-left: 28px;">
+                <p>+966 550-000-000</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@gmail.com">Shopping@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About the company</span> for selling Glasses online shop
+            </p>
+            <div class="footer-icons">
+                <a href="#"><i class=""><img src="./assets/images/icon/icons8-facebook-48.png" alt=" alt" class="wi"></i></a>
+                <a href="#"><i class=""><img src="./assets/images/icon/icons8-instagram-48.png" alt="" class="wi"></i></a>
+                <a href="#"><i class=""><img src="./assets/images/icon/icons8-telegram-app-48.png" alt="" class="wi"></i></a>
+                <a href="#"><i class=""><img src="./assets/images/icon/icons8-twitter-48.png" alt="" class="wi"></i></a>
+                <a href="#"><i class=""><img src="./assets/images/icon/icons8-whatsapp-48.png" alt="" class="wi"></i></a>
+            </div>
+        </div>
+    </footer>
+      <script src="./js/script.js"></script>
+      
+   </body>
+</html>
